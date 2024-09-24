@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hug plss</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-vector/flower-background-desktop-wallpaper-cute-vector_53876-136877.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
+
+        .buttons {
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn--yes {
+            background: green;
+        }
+
+        .btn--no {
+            background: red;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .response {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 200px; /* Adjust size as needed */
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1 class="title">Can u hug me?</h1>
+        <img id="catImage" src="https://i.pinimg.com/736x/92/e2/a1/92e2a16d67e0777fe943b19f0e4eecce.jpg" alt="Cute Cat">
+        <div class="buttons">
+            <button class="btn btn--yes" onclick="showResponse('yes')">Yes</button>
+            <button class="btn btn--no" onclick="moveButton(event)">No</button>
+        </div>
+        <p id="response" class="response"></p>
+        <audio id="backgroundMusic" src="https://www.youtube.com/watch?v=Q0G-SThjW0c" preload="auto"></audio>
+    </main>
+    <script>
+        function showResponse(answer) {
+            const response = document.getElementById('response');
+            const catImage = document.getElementById('catImage');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+
+            if (answer === 'yes') {
+                response.textContent = 'Yipeee! Ilysm mwah <3';
+                catImage.src = 'https://media.tenor.com/lCKwsD2OW1kAAAAi/happy-cat-happy-happy-cat.gif'; // Change image
+                backgroundMusic.play(); // Play music
+            } else {
+                response.textContent = '';
+                catImage.src = 'https://i.pinimg.com/736x/92/e2/a1/92e2a16d67e0777fe943b19f0e4eecce.jpg'; // Reset image
+                backgroundMusic.pause(); // Pause music
+                backgroundMusic.currentTime = 0; // Reset music to start
+            }
+        }
+
+        function moveButton(event) {
+            const button = event.target;
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.position = 'absolute';
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
